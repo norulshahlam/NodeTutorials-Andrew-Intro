@@ -19,6 +19,10 @@ place it in the same dir as mongodb
 
 `C://Users/NORULSHAHLAM/mongodb/bin/mongod.exe --dbpath=C://Users/NORULSHAHLAM/mongodb-data`
 
+kill port
+
+`npx kill-port 3000`
+
 you will find there is a boilder plate files in mongodb-data folder. and in the logs, it will show ` waiting for connections on port 27017` means connection is establised
 
 ### 6. install mongodb gui
