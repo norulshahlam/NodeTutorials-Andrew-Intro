@@ -22,7 +22,6 @@ router.post("/users/login", async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    console.log(email, password);
     const user = await User.findByCredentials(email, password);
     const token = await user.generateAuthToken();
     res.send({ user, token });
@@ -53,10 +52,12 @@ router.post("/users/logoutAll", auth, async (req, res) => {
     res.status(500).send();
   }
 });
-
+//get logged in user
 router.get("/users/me", auth, async (req, res) => {
   res.send(req.user);
 });
+
+//get all users
 router.get("/users", async (req, res) => {
   try {
     const users = await User.find({});
@@ -75,7 +76,7 @@ router.delete("/users/me", auth, async (req, res) => {
     //   return res.status(404).send({ Error: "ID not found" });
     // }
     await req.user.remove();
-    res.send(req.user);
+    res.send(`user deleted: ${req.user}`);
   } catch (e) {
     res.status(400).send(e);
   }

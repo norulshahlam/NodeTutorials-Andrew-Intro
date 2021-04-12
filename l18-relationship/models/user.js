@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
+const chalk = require("chalk");
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const Task = require("./task");
 
 /*********************FOR USERS *********************/
 //define model.
@@ -93,7 +95,9 @@ userSchema.statics.findByCredentials = async (email, password) => {
   }
 
   const isMatch = await bcrypt.compare(password, user.password);
+
   if (!isMatch) {
+    console.log(chalk.red("pswd no match"));
     throw new Error("Password not matched");
   }
 
@@ -108,5 +112,13 @@ userSchema.pre("save", async function (next) {
   }
   next();
 });
+
+//del all user tasks whe user is removed
+userSchema.pre("remove", async function (next) {
+  const user = this;
+  await Task.deleteMany({ owner: user._id });
+  next();
+});
+
 const User = mongoose.model("User", userSchema);
 module.exports = User;
