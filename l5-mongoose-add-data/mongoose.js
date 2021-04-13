@@ -8,9 +8,21 @@ https://mongoosejs.com/docs/guide.html
 4 simple steps:
 
 1. connnection,
-2. define model,
+
+https://mongoosejs.com/docs/api.html#mongoose_Mongoose-connect
+
+
+2. define model
+
+https://mongoosejs.com/docs/guide.html#models
+
 3. add data,
+
+https://mongoosejs.com/docs/api.html#schema_Schema-add
+
 4. save data
+
+https://mongoosejs.com/docs/api.html#document_Document-save
 */
 
 //1. connnection

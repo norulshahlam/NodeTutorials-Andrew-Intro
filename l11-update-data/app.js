@@ -24,7 +24,6 @@ const port = process.env.PORT || 3000;
 require("./db/mongoose");
 const User = require("./models/user");
 const Task = require("./models/task");
-const { ObjectID } = require("bson");
 
 app.use(express.json());
 
@@ -41,7 +40,6 @@ app.post("/users", async (req, res) => {
     res.status(400).send(e);
   }
 });
-
 //get all users
 app.get("/users", async (req, res) => {
   try {
@@ -51,7 +49,6 @@ app.get("/users", async (req, res) => {
     res.status(500).send();
   }
 });
-
 //get 1 user by id
 app.get("/users/:id", async (req, res) => {
   try {
@@ -65,7 +62,6 @@ app.get("/users/:id", async (req, res) => {
     res.status(500).send();
   }
 });
-
 //add task
 app.post("/tasks", async (req, res) => {
   const task = new Task(req.body);
@@ -76,7 +72,6 @@ app.post("/tasks", async (req, res) => {
     res.status(400).send(e);
   }
 });
-
 //get all tasks
 app.get("/tasks", async (req, res) => {
   try {
@@ -86,7 +81,6 @@ app.get("/tasks", async (req, res) => {
     res.status(500).send();
   }
 });
-
 //get 1 task by id
 app.get("/tasks/:id", async (req, res) => {
   const id = req.params.id;
@@ -102,8 +96,7 @@ app.get("/tasks/:id", async (req, res) => {
     res.status(500).send(e);
   }
 });
-
-//update 1 uswer
+//update 1 user
 app.patch("/users/:id", async (req, res) => {
   //3.
   const updates = Object.keys(req.body);

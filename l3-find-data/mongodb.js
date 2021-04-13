@@ -1,6 +1,8 @@
 /*  
 find 1 data
 find multiple data
+
+http://mongodb.github.io/node-mongodb-native/3.6/api/Collection.html#findOne
 */
 
 const { MongoClient, ObjectID } = require("mongodb");

@@ -2,7 +2,6 @@
 
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
-const chalk = require("chalk");
 
 const auth = async (req, res, next) => {
   try {
@@ -16,7 +15,6 @@ const auth = async (req, res, next) => {
     });
 
     if (!user) {
-      console.log(chalk.red("no user"));
       throw new Error();
     }
     req.token = token;

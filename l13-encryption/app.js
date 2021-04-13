@@ -3,14 +3,18 @@
 1. authentication and security
 
 of the most basic things every application should do which is securely storing users passwords by encryption
-
+ 
 2. using npm bcrypt.js to encrypt password
 
 encryption algorithm can turn that random series of characters back in to the original value.
 
-hashing algorithms don't work like this they are one way which means we can't reverse the process.
+hashing algorithms don't work like this - they are one way which means we can't reverse the process.
 
 3. middleware
+
+Middleware (also called pre and post hooks) are functions which are passed control during execution of asynchronous functions. Middleware is specified on the schema level and is useful for writing plugins.
+
+https://mongoosejs.com/docs/middleware.html
 
 we're going to customize the User model Mongoose supports what's known as middleware as a way to customize the behavior of your Mongoose model and it's going to allow us to do some pretty interesting things to explore this.
 
@@ -18,7 +22,7 @@ we can register some functions to run before or after given events occur. for ex
 
 
 change the user model from:
-const User = mongoose.model("User", {.... > 
+const User = mongoose.model("User", {.... >>>> 
 const UserSchema = new mongoose.Schema({...
 
 */

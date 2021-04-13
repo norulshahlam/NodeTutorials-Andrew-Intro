@@ -1,13 +1,19 @@
 /*
 1. use promise api and implement into our existing code
 
-2. use update 1 query and many query with condition
+2. update 1 query (by inc a value)
 
-3. inc a value in data field
+http://mongodb.github.io/node-mongodb-native/3.6/api/Collection.html#update
 
-4. delete data
+3. update many query 
 
 http://mongodb.github.io/node-mongodb-native/3.6/api/Collection.html#updateMany
+
+
+
+4. delete many data
+5. delete 1 data
+
 
 */
 
@@ -25,7 +31,7 @@ MongoClient.connect(
 
     const db = client.db(databaseName);
 
-    //delete 1 data
+    // 5. delete 1 data
     db.collection("users")
       .deleteOne({
         //get all completed fields this age n del it
@@ -38,7 +44,7 @@ MongoClient.connect(
         console.log(error);
       });
 
-    //delete many data
+    // 4. delete many data
     // db.collection("users")
     //   .deleteMany({
     //     //get all completed fields this age n del it
@@ -51,7 +57,7 @@ MongoClient.connect(
     //     console.log(error);
     //   });
 
-    // //update many
+    // 3. update many
     // db.collection("tasks")
     //   .updateMany(
     //     {
@@ -72,7 +78,7 @@ MongoClient.connect(
     //     console.log(error);
     //   });
 
-    //  update 1 data by id n inc age by 1
+    // 2. update 1 data by id n inc age by 1
     // db.collection("users")
     //   .updateOne(
     //     { _id: new ObjectID("606a8d4a73d080201c256bf7") },

@@ -57,6 +57,7 @@ const userSchema = new mongoose.Schema({
     },
   ],
 });
+/* this methods are accessible on the instances sometimes called instance methods. */
 //gen token & add to User schema
 userSchema.methods.generateAuthToken = async function () {
   const user = this;
@@ -65,7 +66,7 @@ userSchema.methods.generateAuthToken = async function () {
   await user.save();
   return token;
 };
-
+/*  static methods are accessible on the model - sometimes called Model methods */
 //login user
 userSchema.statics.findByCredentials = async (email, password) => {
   const user = await User.findOne({ email });

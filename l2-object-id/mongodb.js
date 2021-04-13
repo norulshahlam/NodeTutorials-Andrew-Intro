@@ -10,11 +10,9 @@ id field created in db are binary data. the reason they're using binary data ove
 const { MongoClient, ObjectID } = require("mongodb");
 const id = new ObjectID();
 
-/*So this is a visualization making it easier to see the object I.D. value. So over inside of our code we have this I.D. variable that actually has an I.D. property on it. This contains the raw binary information.
+/*So this is a visualization making it easier to see the object I.D. value. So over inside of our code we have this I.D. variable that actually has an I.D. property on it. This contains the raw binary information. Now we can check the length of this by using id.id.length
 
-Now we can check the length of this by using I.D. dot I.D. dot length and right here we're going to
-
-Now if we were to convert that from binary into a string it would double in size. We're gonna use two hex string which is going to convert it over to its string representation. and we're gonna do is check its length.
+Now if we were to convert that from binary into a string it would double in size. We're gonna use .toHexString() which is going to convert it over to its string representation. and we're gonna do is check its length.
 
 see that the original representation was just 12 while the string representation was double in size at 24. 
 

@@ -9,7 +9,7 @@ Sanitization may include the elimination of unwanted characters from the input b
 mongoose provides validation but limited. we will use npm validator to validate complex data like valid email, credit card, hash, url etc
 
 1. validate using mongoose
-2. validate using validator
+2. validate using validator npm
 3. trim & lowercase on email using mongoose - remove the white spaces from the string at both ends (not in btwn)
 4. set default value on age
 5. set min length

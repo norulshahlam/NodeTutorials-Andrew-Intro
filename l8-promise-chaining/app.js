@@ -1,6 +1,5 @@
 /*
-In this lesson, you’ll explore promise chaining. Promise chaining is a syntax that allows you
-to chain together multiple asynchronous tasks in a specific order
+In this lesson, you’ll explore promise chaining. Promise chaining is a syntax that allows you to chain together multiple asynchronous tasks in a specific order
 */
 
 const add = (a, b) => {

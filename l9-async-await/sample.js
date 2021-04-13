@@ -26,7 +26,9 @@ const add = (a, b) => {
   });
 };
 
+//2. since there is 'await', we must add 'async' here
 const doWork = async () => {
+  //1. add() returns promise, so we must use 'await' here
   const sum = await add(1, 2);
   const sum2 = await add(sum, -9);
   const sum3 = await add(sum2, 2);

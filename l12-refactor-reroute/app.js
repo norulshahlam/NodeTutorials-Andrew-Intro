@@ -1,6 +1,6 @@
 /*  MAKE SURE TO CONNECT TO DB!
 
-We now have end points for managing day for CRUD operations for our resources we can create, read, update, delete.
+We now have end points for managing CRUD operations. we can now create, read, update, delete.
 
 Now we're going to learn how to refactor our application so you don't have every single route defined in these same file. it's typically best to break that up into many small files when we find ourselves in a situation with a single file that always just gets longer and longer as we add more features.
 

@@ -1,8 +1,6 @@
 /*  MAKE SURE TO CONNECT TO DB!
 
 1. refactor code into using async await
-
-
 */
 const express = require("express");
 const app = express();

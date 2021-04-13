@@ -1,6 +1,6 @@
 /*  MAKE SURE TO CONNECT TO DB!
 
-login user
+login user by using method findByCredentials(). this is defined in User models. to define a function, we must like this - userSchema.statics.findByCredentials... by doing this, we can access this function directly
 
 */
 const express = require("express");

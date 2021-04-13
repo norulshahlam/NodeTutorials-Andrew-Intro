@@ -14,7 +14,6 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   age: {
-    //4    default: 0,
     type: Number,
 
     validate(value) {
@@ -59,7 +58,7 @@ const userSchema = new mongoose.Schema({
   ],
 });
 
-// 2. virtual property
+// 2. virtual model
 userSchema.virtual("tasks", {
   ref: "Task",
   localField: "_id",
@@ -113,7 +112,7 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
-//del all user tasks whe user is removed
+//4. del all user tasks whe user is removed
 userSchema.pre("remove", async function (next) {
   const user = this;
   await Task.deleteMany({ owner: user._id });

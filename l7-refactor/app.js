@@ -2,11 +2,15 @@
 
 MAKE SURE TO CONNECT TO DB!
 
-1. refactor code, seperate all query into individual file,
+1. refactor code, seperate all tasks and users query into individual file,
 
-2. use express and modemon
+2. use nodemon.
 
-3. resource endpoint for creation - post request using postman n receive on backend, and save to db
+3. express for resource endpoint creation - all requests will use postman
+
+previously we use mongoose to create model and save data. this only works internally in your own script. with express, u can create endpoints so requests can be made externally
+
+http://expressjs.com/en/4x/api.html
 
 Simply put, an endpoint is one end of a communication channel. When an API interacts with another system, the touchpoints of this communication are considered endpoints. For APIs, an endpoint can include a URL of a server or service. Each endpoint is the location from which APIs can access the resources they need to carry out their function.
 
@@ -28,12 +32,17 @@ const port = process.env.PORT || 3000;
 require("./db/mongoose");
 const User = require("./models/user");
 const Task = require("./models/task");
-const { ObjectID } = require("bson");
 
+/* It's going to automatically pass incoming Jason to an object so we can access it in our request handlers. */
 app.use(express.json());
 
 app.post("/users", (req, res) => {
-  //read the req made
+  /*read the req made. try send your req in raw format, object:
+  {
+    name: 'bob',
+    age: 40
+  }
+  */
   console.log(req.body);
   const user = new User(req.body);
   user
@@ -46,9 +55,9 @@ app.post("/users", (req, res) => {
       res.status(400).send(e);
     });
 });
+
+//get all tasks
 app.post("/tasks", (req, res) => {
-  //read the req made
-  console.log(req.body);
   const task = new Task(req.body);
   task
     .save()

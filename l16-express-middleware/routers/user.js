@@ -55,7 +55,7 @@ router.post("/users/logoutAll", auth, async (req, res) => {
 
 /* get 1 user - we can use middleware by adding another arg 'auth'. 
 We now have a route that allows a user to get their profile when they're authenticated.
-we dont use the below route anymore get("/users") as we 1 to show only 1 user profile according to the user credentials. 
+we dont use the below route anymore get("/users") as we 1 to show the profile tht is logged iin. 
 below code currently shows all users when 1 user is logged in */
 router.get("/users/me", auth, async (req, res) => {
   res.send(req.user);
