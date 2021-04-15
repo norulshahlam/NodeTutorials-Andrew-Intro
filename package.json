@@ -4,7 +4,7 @@
   "description": "\\***\\*\\*\\*\\*\\***\\*\\*\\*\\***\\*\\*\\*\\*\\*** setting up mongo db \\***\\*\\*\\*\\*\\***\\*\\*\\*\\***\\*\\*\\*\\*\\***",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon l18-relationship/app.js",
+    "start": "nodemon l20-file-uploads/app.js",
     "db": "C://Users/NORULSHAHLAM/mongodb/bin/mongod.exe --dbpath=C://Users/NORULSHAHLAM/mongodb-data",
     "dev": "concurrently \"npm run start\" \"npm run db\" "
   },
@@ -13,14 +13,16 @@
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "concurrently": "^6.0.1",
-    "express": "^4.16.4",
-    "jsonwebtoken": "^8.4.0",
-    "mongodb": "^3.1.10",
-    "mongoose": "^5.3.16",
-    "validator": "^10.9.0"
+    "concurrently": "^6.0.2",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.6.6",
+    "mongoose": "^5.12.3",
+    "multer": "^1.4.2",
+    "sharp": "^0.28.1",
+    "validator": "^10.11.0"
   },
   "devDependencies": {
-    "nodemon": "^1.18.9"
+    "nodemon": "^1.19.4"
   }
 }
