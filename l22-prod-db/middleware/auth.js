@@ -1,7 +1,7 @@
 /* Middleware function - this function is the function that's going to run between the request coming to the server and the root handler actually running. */
 
 const jwt = require("jsonwebtoken");
-const User = require("../../models/user");
+const User = require("../models/user");
 const chalk = require("chalk");
 
 const auth = async (req, res, next) => {
