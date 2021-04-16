@@ -4,14 +4,15 @@
   "description": "\\***\\*\\*\\*\\*\\***\\*\\*\\*\\***\\*\\*\\*\\*\\*** setting up mongo db \\***\\*\\*\\*\\*\\***\\*\\*\\*\\***\\*\\*\\*\\*\\***",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon l20-file-uploads/app.js",
+    "start": "node l22-prod-db/app.js",
     "db": "C://Users/NORULSHAHLAM/mongodb/bin/mongod.exe --dbpath=C://Users/NORULSHAHLAM/mongodb-data",
-    "dev": "concurrently \"npm run start\" \"npm run db\" "
+    "dev": "env-cmd l22-prod-db/config/dev.env nodemon l22-prod-db/app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@sendgrid/mail": "^6.3.1",
     "bcryptjs": "^2.4.3",
     "concurrently": "^6.0.2",
     "express": "^4.17.1",
@@ -23,6 +24,7 @@
     "validator": "^10.11.0"
   },
   "devDependencies": {
+    "env-cmd": "^8.0.2",
     "nodemon": "^1.19.4"
   }
 }

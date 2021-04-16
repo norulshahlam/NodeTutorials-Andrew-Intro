@@ -2,7 +2,7 @@
  
 we will create a relationship between a user and the tasks that they've created. This is going to be important to make sure that users can only access and manage their tasks and they can't mess with someone else's. this is done by:
 
-1. create a users array on the Task model by creating a additional field in task model n assign User reference as 'owner'. so 'owner' field in Task model refers to User id
+1. create a users array on the Task model by creating a additional field in task model n assign User reference as 'owner'. so 'owner' field in Task model refers to User id. then we can se execPopulate to get the User profile too thru task id
 
 We're not going to create a tasks array on the User model like we do for task. Instead what we're going to do is set up what's known as a virtual property. 
 
@@ -17,6 +17,7 @@ In this case between our user and our task to start off we'll be using userSchem
 */
 require("./db/mongoose");
 const express = require("express");
+const chalk = require("chalk");
 const app = express();
 const userRouter = require("./routers/user");
 const taskRouter = require("./routers/task");
@@ -34,15 +35,17 @@ app.listen(port, () => {
 const Task = require("./models/task");
 const User = require("./models/user");
 
-//here we test by print out the relationship btwn task and user by id.
+// 1. here we test by print out the relationship btwn task and user by id.
 const main = async () => {
-  // const task = await Task.findById("60742cbcfcdc2c0b4ca301a6");
-  // await task.populate("owner").execPopulate();
-  // console.log(chalk.cyan("owner", task.owner));
-  //
-  // const user = await User.findById("6073f23a85b853070c083a4b");
-  // await user.populate("tasks").execPopulate();
-  // console.log(chalk.magenta("user", user.tasks));
+  const task = await Task.findById("60791d42952c2c28046698b4");
+  await task.populate("owner").execPopulate();
+  console.log(chalk.magenta(task));
+  console.log(chalk.cyan(task.owner));
+
+  const user = await User.findById("60790189c6cff5046483e8bd");
+  await user.populate("tasks").execPopulate();
+  console.log(chalk.magenta(user));
+  console.log(chalk.cyan(user.tasks));
 };
 
 main();

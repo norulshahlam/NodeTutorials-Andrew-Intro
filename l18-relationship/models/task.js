@@ -12,7 +12,7 @@ const Task = mongoose.model("Task", {
     default: false,
     type: Boolean,
   },
-  //1. define relationship here
+  /*  1. define relationship here. So over inside of the task model we have a reference to the user on owner owner is a real field. It is stored in the database. */
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,

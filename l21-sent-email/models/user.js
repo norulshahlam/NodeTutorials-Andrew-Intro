@@ -1,64 +1,74 @@
 const mongoose = require("mongoose");
 const chalk = require("chalk");
 const validator = require("validator");
+
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const Task = require("./task");
 
 /*********************FOR USERS *********************/
-//define model.
-const userSchema = new mongoose.Schema({
-  name: {
-    type: String,
 
-    required: true,
-  },
-  age: {
-    type: Number,
+const userSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
 
-    validate(value) {
-      if (value < 0) {
-        throw new Error("Age cant bbe below 0");
-      }
+      required: true,
     },
-  },
-  email: {
-    type: String,
-    unique: true,
+    age: {
+      type: Number,
 
-    trim: true,
-    lowercase: true,
-
-    validate(value) {
-      if (!validator.isEmail(value)) {
-        throw new Error("Email is invalid");
-      }
-    },
-  },
-  password: {
-    type: String,
-    trim: true,
-    required: true,
-
-    minlength: 7,
-    validate(value) {
-      if (value.toLowerCase().includes("password")) {
-        throw new Error("Password cannot caontains password");
-      }
-    },
-  },
-
-  tokens: [
-    {
-      token: {
-        type: String,
-        required: true,
+      validate(value) {
+        if (value < 0) {
+          throw new Error("Age cant bbe below 0");
+        }
       },
     },
-  ],
-});
+    email: {
+      type: String,
+      unique: true,
 
-// 2. virtual model This is not stored in the database. It is just for Mongoose to be able to figure out who owns what and how they're related.
+      trim: true,
+      lowercase: true,
+
+      validate(value) {
+        if (!validator.isEmail(value)) {
+          throw new Error("Email is invalid");
+        }
+      },
+    },
+    password: {
+      type: String,
+      trim: true,
+      required: true,
+
+      minlength: 7,
+      validate(value) {
+        if (value.toLowerCase().includes("password")) {
+          throw new Error("Password cannot caontains password");
+        }
+      },
+    },
+
+    tokens: [
+      {
+        token: {
+          type: String,
+          required: true,
+        },
+      },
+    ],
+
+    avatar: {
+      type: Buffer,
+    },
+  },
+  {
+    //1
+    timestamps: true,
+  }
+);
+
 userSchema.virtual("tasks", {
   ref: "Task",
   localField: "_id",
@@ -72,13 +82,15 @@ userSchema.methods.toJSON = function () {
   delete userObject.password;
   delete userObject.tokens;
 
+  delete userObject.avatar;
+
   return userObject;
 };
 
-//gen token & add to User schema
 userSchema.methods.generateAuthToken = async function () {
   const user = this;
-  const token = jwt.sign({ _id: user._id.toString() }, "helloworld");
+  // f)
+  const token = jwt.sign({ _id: user._id.toString() }, process.env.JWT_SECRET);
 
   user.tokens = user.tokens.concat({ token });
   await user.save();
@@ -112,7 +124,7 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
-//4. del all user tasks whe user is removed
+// del all user tasks whe user is removed
 userSchema.pre("remove", async function (next) {
   const user = this;
   await Task.deleteMany({ owner: user._id });
