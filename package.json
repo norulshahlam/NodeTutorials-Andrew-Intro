@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node l22-prod-db/app.js",
     "db": "C://Users/NORULSHAHLAM/mongodb/bin/mongod.exe --dbpath=C://Users/NORULSHAHLAM/mongodb-data",
-    "dev": "env-cmd l22-prod-db/config/dev.env nodemon l22-prod-db/app.js"
+    "dev": "env-cmd l22-prod-db/config/dev.env nodemon l22-prod-db/app.js",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -25,6 +26,7 @@
   },
   "devDependencies": {
     "env-cmd": "^8.0.2",
+    "jest": "^23.6.0",
     "nodemon": "^1.19.4"
   }
 }

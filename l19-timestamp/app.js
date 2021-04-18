@@ -1,4 +1,6 @@
-/*  MAKE SURE TO CONNECT TO DB, open Postman and Robo 3T
+/*  MAKE SURE TO CONNECT TO DB first, then run this app, open Postman and Robo 3T
+
+change the dedv script to run this folder
  
 we're going to kick off the section by learning how we can enable Timestamps for our Mongoose models.
 
