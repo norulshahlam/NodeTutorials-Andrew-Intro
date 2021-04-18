@@ -9,7 +9,7 @@ const auth = async (req, res, next) => {
     /* receive token and decode using secret key and receives the _id in the decoded obj.with the _id and token, we can find that user. if returns user, means it is authenticated  */
     const token = req.header("Authorization").replace("Bearer ", "");
     // f)
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, "helloworld");
 
     const user = await User.findOne({
       _id: decoded._id,
