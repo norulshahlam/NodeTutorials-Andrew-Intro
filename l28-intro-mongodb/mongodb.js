@@ -3,12 +3,12 @@
 as we are connecting to local db, we have to establish connection:
 C://Users/NORULSHAHLAM/mongodb/bin/mongod.exe --dbpath=C://Users/NORULSHAHLAM/mongodb-data
 
-most of the query methods rhaas a callback 
+most of the query methods has a callback 
 
 go to readme.md for more details
 
-1. add sibngle data
-2. add  multiple data
+1. add single data
+2. add multiple data
 3. add to new collection
 
 http://mongodb.github.io/node-mongodb-native/3.6/api/Collection.html#insert

@@ -1,14 +1,10 @@
 /*  MAKE SURE TO CONNECT TO DB, open Postman and Robo 3T
  
-1. In this lesson we're going to start the process of deploying the task manager application to production.
+ you're going to learn how to set up email notifications in the task manager application using https://sendgrid.com/
 
-The goal is to (1) get a production ready Mongo DB database and then (2) the next lesson will actually set everything up on Heroku to get our application deployed and working with that new database.
+ a) this will be implemented in router.post("/users") to sent email to uswr who just created an account
+ b) this will be implemented in router.delete("/users") to sent email to uswr who close an account
 
-But as mentioned step (1) is to get a production ready database in place. Right now the only database we have is the one running locally on our machine and that's not going to work for when we deploy our application to Heroku.
-
-We want to use a mongo D.B. hosting service to get a database up and running that our Heroku app can connect to.
-
-2. how to set up custom environment variables for your node.js applications.
 
 */
 require("./db/mongoose");
@@ -17,8 +13,8 @@ const app = express();
 const userRouter = require("./routers/user");
 const taskRouter = require("./routers/task");
 // d)
-const port = process.env.PORT;
-console.log("object");
+const port = process.env.PORT || 3000;
+
 app.use(express.json());
 app.use(userRouter);
 app.use(taskRouter);
