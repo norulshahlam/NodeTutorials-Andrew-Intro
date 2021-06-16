@@ -2,6 +2,10 @@
 
 This is tutorial for beginners. we will learn sfeatures seperately up till lesson 18 where we transition to database. from there all other full stack features will be added. all the succeding lessons will have its own folder so we can track the development.
 
+section 1 - basic of node js
+
+section 2 - express, promises, mongoose, database, routing, async-aeait, promise-chaining, encyption, db-relatiosnhip, timestamp, file-upload, email, and deploymeny
+
 \***\*\*\*\*\***\*\*\*\***\*\*\*\*\*** setting up mongo db \***\*\*\*\*\***\*\*\*\***\*\*\*\*\***
 
 all npm here will be installed locally in this folder
